@@ -1,14 +1,15 @@
-import CustomButton from '@/components/CustomButton'
-import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
-
+import CustomButton from '@/components/CustomButton';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 export default function welcome() {
+    const router = useRouter();
   return (
     <View style={styles.mainframe}>
         <Image source={require('../assets/images/logo.png')} style={styles.image}/>
         <Text style={styles.heading}>Let's make that smile beautiful</Text>
         <View style={styles.buttonframe}>
-            <CustomButton text="Get Started" task={()=>{alert("button pressed")}} />
+            <CustomButton text="Get Started" task={()=>{router.navigate('/(login)/login')}} />
         </View>
     </View>
   )
