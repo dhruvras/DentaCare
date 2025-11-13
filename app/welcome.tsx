@@ -9,7 +9,7 @@ export default function welcome() {
         <Image source={require('../assets/images/logo.png')} style={styles.image}/>
         <Text style={styles.heading}>Let's make that smile beautiful</Text>
         <View style={styles.buttonframe}>
-            <CustomButton text="Get Started" task={()=>{router.navigate('/(login)/login')}} />
+            <CustomButton text="Get Started" task={()=>{router.navigate('/(login)/login')}} state={false} />
         </View>
     </View>
   )
