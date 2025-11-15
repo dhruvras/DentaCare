@@ -11,8 +11,8 @@ export default function CustomButton({
   state: boolean;
 }) {
   return (
-    <TouchableOpacity onPress={task} disabled={state} activeOpacity={0.7}>
-      <View style={[styles.frame, state && styles.disabled]}>
+    <TouchableOpacity onPress={task} disabled={!state}>
+      <View style={[styles.frame, !state && styles.disabled]}>
         <Text style={styles.heading}>{text}</Text>
       </View>
     </TouchableOpacity>
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginHorizontal: 100,
+    marginHorizontal: 90,
   },
 });

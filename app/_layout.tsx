@@ -1,10 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Stack } from "expo-router";
+import { Stack, useSegments } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export default function _layout() {
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const segments = useSegments(); // 🔥 triggers whenever the route changes
 
   // 🔹 Function to read data from AsyncStorage
   const getData = async (key: string) => {
@@ -17,14 +18,15 @@ export default function _layout() {
     }
   };
 
-  // 🔹 Check login status on app start
+  // 🔹 Check login status on app start AND whenever the route changes
   useEffect(() => {
     const checkLoginStatus = async () => {
       const value = await getData("isLoggedIn");
       setLoggedIn(value === "true");
     };
+
     checkLoginStatus();
-  }, []);
+  }, [segments]); // 🔥 important fix — runs on navigation change
 
   // 🔹 Show loader until login state is known
   if (loggedIn === null) {
@@ -41,7 +43,7 @@ export default function _layout() {
       {loggedIn ? (
         <Stack.Screen name="(home)/home" />
       ) : (
-        <Stack.Screen name="(auth)/login" />
+        <Stack.Screen name="welcome" />
       )}
     </Stack>
   );

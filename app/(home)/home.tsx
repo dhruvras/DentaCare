@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function home() {
     const router = useRouter();
@@ -17,3 +17,7 @@ export default function home() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+
+})
